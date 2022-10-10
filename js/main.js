@@ -1,15 +1,23 @@
-const returnRandomNumber = (firstNumber, lastNumber) => {
+const checkReceivedNumbers = (firstNumber, lastNumber) => {
+  if (firstNumber < 0 || lastNumber < 0) {
+    return NaN
+  }
+  if (firstNumber > lastNumber) {
+    [firstNumber, lastNumber] = [lastNumber, firstNumber]
+  }
+  return getRandomNumber(firstNumber, lastNumber);
+}
+
+const getRandomNumber = (firstNumber, lastNumber) => {
   if (firstNumber < lastNumber) {
     return Math.floor(Math.random() * (lastNumber - firstNumber + 1)) + firstNumber;
   }
 }
 
-returnRandomNumber(5, 9);
+getRandomNumber(5, 9);
 
-const checkMaxLeight = (lineNumber, maxLeight) => {
-  if (maxLeight >= 20 && maxLeight <= 140) {
-    return true
-  }
+const checkMaxLenght = (string, minLenght, maxLenght) => {
+  return string >= minLenght && string <= maxLenght
 }
 
-checkMaxLeight(1, 50)
+checkMaxLenght(50, 20, 140);
