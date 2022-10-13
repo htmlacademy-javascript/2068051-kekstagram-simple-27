@@ -1,23 +1,18 @@
-const checkReceivedNumbers = (firstNumber, lastNumber) => {
-  if (firstNumber < 0 || lastNumber < 0) {
-    return NaN
+import { getRandomNumber } from "random.js";
+import { checkMaxLenght } from "checklenght.js";
+
+
+const newAploadFoto = (_, index) => {
+  const id = index + 1;
+  return {
+  id,
+  urlPhoto: `photos/${id}.jpg`,
+  description: `описание`,
+  likes: getRandomNumber(15, 200),
+  comments: getRandomNumber(0, 200),
   }
-  if (firstNumber > lastNumber) {
-    [firstNumber, lastNumber] = [lastNumber, firstNumber]
-  }
-  return getRandomNumber(firstNumber, lastNumber);
-}
+};
 
-const getRandomNumber = (firstNumber, lastNumber) => {
-  if (firstNumber < lastNumber) {
-    return Math.floor(Math.random() * (lastNumber - firstNumber + 1)) + firstNumber;
-  }
-}
+const AploadFotos = Array.from({length: 25}, newAploadFoto);
 
-getRandomNumber(5, 9);
-
-const checkMaxLenght = (string, minLenght, maxLenght) => {
-  return string >= minLenght && string <= maxLenght
-}
-
-checkMaxLenght(50, 20, 140);
+console.log(AploadFotos);
