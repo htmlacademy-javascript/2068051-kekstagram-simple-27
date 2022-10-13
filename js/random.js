@@ -15,3 +15,7 @@ export const getRandomNumber = (firstNumber, lastNumber) => {
 }
 
 getRandomNumber(5, 9);
+
+export const getRandomArrayElement = (elements) => {
+  return elements[getRandomNumber(0, elements.lenght - 1)]
+}
