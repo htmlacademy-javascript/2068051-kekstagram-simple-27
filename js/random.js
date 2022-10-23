@@ -1,12 +1,12 @@
 export const checkReceivedNumbers = (firstNumber, lastNumber) => {
   if (firstNumber < 0 || lastNumber < 0) {
-    return NaN
+    return NaN;
   }
   if (firstNumber > lastNumber) {
-    [firstNumber, lastNumber] = [lastNumber, firstNumber]
+    [firstNumber, lastNumber] = [lastNumber, firstNumber];
   }
-  return getRandomNumber(firstNumber, lastNumber);
-}
+  return checkReceivedNumbers(firstNumber, lastNumber);
+};
 
 /**
  * Фунция возвращает случайное рандомное целое число
@@ -17,10 +17,10 @@ export const getRandomNumber = (firstNumber, lastNumber) => {
   if (firstNumber < lastNumber) {
     return Math.floor(Math.random() * (lastNumber - firstNumber + 1)) + firstNumber;
   }
-}
+};
 
-getRandomNumber(5, 9);
+console.log(getRandomNumber(5, 9));
+const arra1 = ['white', 'black', 'red'];
+export const getRandomArrayElement = (elements) => elements[getRandomNumber (0, elements.length - 1)];
 
-export const getRandomArrayElement = (elements) => {
-  return elements[getRandomNumber(0, elements.lenght - 1)]
-}
+console.log(getRandomArrayElement[arra1]);
