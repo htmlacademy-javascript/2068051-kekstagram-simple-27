@@ -1,6 +1,4 @@
-import { getRandomNumber, getRandomArrayElement } from "./random.js";
-
-const TOTAL_PHOTOS = 25;
+import { getRandomNumber, getRandomArrayElement } from './random.js';
 
 const DESCRIPTION_TEXTS = [
   'Мексиканская художница, жена Диего Риверы. В её работах очень сильно влияние народного мексиканского искусства, культуры доколумбовых цивилизаций Америки. Также прослеживается влияние европейской живописи.',
@@ -20,19 +18,19 @@ const DESCRIPTION_TEXTS = [
 * @param {undefined} - не задан
 * @param {number} index - Порядковый числовой индекс
 */
-const newAploadedFoto = (_, index) => {
+const getUserPhoto = (_, index) => {
   const id = index + 1;
   return {
-  id,
-  urlPhoto: `photos/${id}.jpg`,
-  description: getRandomArrayElement( DESCRIPTION_TEXTS),
-  likes: getRandomNumber(15, 200),
-  comments: getRandomNumber(0, 200),
-  }
+    id,
+    urlPhoto: `photos/${id}.jpg`,
+    description: getRandomArrayElement(DESCRIPTION_TEXTS),
+    likes: getRandomNumber(15, 200),
+    comments: getRandomNumber(0, 200),
+  };
 };
 
-const displayAploadedFotos = () => Array.from({length: TOTAL_PHOTOS}, newAploadedFoto);
+const generateUsersPhotos = (count) => Array.from({length: count}, getUserPhoto);
 
-export {displayAploadedFotos};
+export {generateUsersPhotos};
 
 

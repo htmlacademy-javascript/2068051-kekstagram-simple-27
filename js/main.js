@@ -1,3 +1,3 @@
-import { displayAploadedFotos } from "./data.js";
+import { getUsersPhotos } from './data.js';
+import './create-preview.js';
 
-console.log(displayAploadedFotos);
