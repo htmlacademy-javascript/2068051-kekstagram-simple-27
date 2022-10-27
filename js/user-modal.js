@@ -1,9 +1,10 @@
-import {isEscapeKey, isEnterKey} from './util.js';
+import { isEscapeKey } from './util.js';
 
 const userModal = document.querySelector('.img-upload__overlay');
-const userModalOpen = document.querySelector('#upload-file');
-const userModalClose = document.querySelector('#upload-cancel');
+const modalOpenElement = document.querySelector('#upload-file');
+const modalCloseElenent = document.querySelector('#upload-cancel');
 const body = document.querySelector('body');
+const uploadForm = document.querySelector('.img-upload__form');
 
 const onPopupEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
@@ -26,16 +27,8 @@ const closeUserModal = () => {
   document.removeEventListener('keydown', onPopupEscKeydown);
 };
 
-userModalOpen.addEventListener('click', () => {
-  openUserModal();
-});
+modalOpenElement.addEventListener('change', openUserModal);
 
-userModalOpen.addEventListener('keydown', (evt) => {
-  if (isEnterKey(evt)) {
-    openUserModal();
-  }
-});
+uploadForm.addEventListener('reset', closeUserModal);
 
-userModalClose.addEventListener('click', () => {
-  closeUserModal();
-});
+export {uploadForm, modalOpenElement};
