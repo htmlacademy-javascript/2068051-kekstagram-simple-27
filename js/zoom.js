@@ -8,24 +8,23 @@ const STEP = 25;
 const MIN_VALUE = 25;
 const MAX_VALUE = 100;
 
+const updateValue = (newValue) => {
+  buttonInput.value = `${newValue}%`;
+  photoToChange.style.transform = (`scale(${newValue / 100})`);
+};
+
 buttonMin.addEventListener('click', () => {
   const currentValue = buttonInput.value;
   const valueInNumber = parseFloat(currentValue);
   if (valueInNumber > MIN_VALUE && valueInNumber <= MAX_VALUE) {
-    const newInputValue = valueInNumber - STEP;
-    buttonInput.value = `${newInputValue}%`;
-    photoToChange.style.transform = (`scale(${newInputValue * 0.01})`);
+    updateValue(valueInNumber - STEP);
   }
 });
 
 buttonMax.addEventListener('click', () => {
-  /** @type {number} */
   const currentValue = buttonInput.value;
   const valueInNumber = parseFloat(currentValue);
   if (valueInNumber >= MIN_VALUE && valueInNumber < MAX_VALUE) {
-    /** @type {number} */
-    const newInputValue = valueInNumber + STEP;
-    buttonInput.value = `${newInputValue}%`;
-    photoToChange.style.transform = (`scale(${newInputValue * 0.01})`);
+    updateValue(valueInNumber + STEP);
   }
 });
