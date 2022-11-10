@@ -19,8 +19,5 @@ export const getRandomNumber = (firstNumber, lastNumber) => {
   }
 };
 
-console.log(getRandomNumber(5, 9));
-const arra1 = ['white', 'black', 'red'];
 export const getRandomArrayElement = (elements) => elements[getRandomNumber (0, elements.length - 1)];
 
-console.log(getRandomArrayElement[arra1]);

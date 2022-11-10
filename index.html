@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link href="vendor/nouislider/nouislider.css" rel="stylesheet">
   <title>Кекстаграм</title>
 </head>
 
@@ -36,7 +37,7 @@
                   <!-- Изменение размера изображения -->
                   <fieldset class="img-upload__scale  scale">
                     <button type="button" class="scale__control  scale__control--smaller">Уменьшить</button>
-                    <input type="text" class="scale__control  scale__control--value" value="55%" title="Image Scale" name="scale" readonly>
+                    <input type="text" class="scale__control  scale__control--value" value="100%" title="Image Scale" name="scale" readonly>
                     <button type="button" class="scale__control  scale__control--bigger">Увеличить</button>
                   </fieldset>
 
@@ -107,7 +108,7 @@
                 <fieldset class="img-upload__text text">
                     <textarea class="text__description" name="description" placeholder="Ваш комментарий..." required minlength="20" maxlength="140" data-pristine-required-message="Обязательное поле"
                     data-pristine-minlength-message="Минимальная длина 20 символа"
-                    data-pristine-maxlength-message="Максимальная длина 140 символов">></textarea>
+                    data-pristine-maxlength-message="Максимальная длина 140 символов"></textarea>
                 </fieldset>
 
                 <!-- Кнопка для отправки данных на сервер -->
@@ -167,6 +168,8 @@
     </section>
   </template>
   <script src="js/main.js" type="module"></script>
+  <!-- <link href="vendor/nouislider/nouislider.css" rel="stylesheet"> -->
+  <script src="vendor/nouislider/nouislider.js"></script>
   <!-- <section class="error">
     <div class="error__inner">
       <h2 class="error__title">Ошибка загрузки файла</h2>
