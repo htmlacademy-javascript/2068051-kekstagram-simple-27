@@ -1,7 +1,6 @@
 const buttonMin = document.querySelector('.scale__control--smaller');
 const buttonMax = document.querySelector('.scale__control--bigger');
 const buttonInput = document.querySelector('.scale__control--value');
-// buttonInput.value = `${100}%`;
 const photoToChange = document.querySelector('.img-upload__preview img');
 const STEP = 25;
 const MIN_VALUE = 25;
@@ -29,7 +28,6 @@ buttonMax.addEventListener('click', () => {
 });
 
 export const resetZoom = () => {
-  // buttonInput.value = `${100}%`;
   updateValue(100);
 };
 

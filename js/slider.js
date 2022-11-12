@@ -3,18 +3,7 @@ const valueElement = document.querySelector('.effect-level__value');
 const radioElement = document.querySelectorAll('.effects__radio');
 const imageAddEffect = document.querySelector('.img-upload__preview');
 console.log(radioElement);
-/*
-логика:
-нажали на радио кнопку
-- удалаился эфект
-- сменился эффект на новый (кроме оригинальной)
-  для этого достать эффект из id
-  добавить класс новый к фото
-*/
-// const effects = [
-//   'grayscale (' + valueElement.value + ')',
-//   ('sepia(' + valueElement.value + ')'),
-// ];
+
 
 noUiSlider.create(sliderElement, {
   range: {

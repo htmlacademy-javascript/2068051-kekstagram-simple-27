@@ -33,4 +33,5 @@ modalOpenElement.addEventListener('change', openUserModal);
 
 uploadForm.addEventListener('reset', closeUserModal);
 
-export {uploadForm, modalOpenElement};
+
+export {uploadForm, modalOpenElement, openUserModal, closeUserModal};
