@@ -1,7 +1,9 @@
 import { sendData } from './api.js';
-import { messageSuccess, messageError } from './util.js';
+import { messageSuccess, messageError, resetComment } from './util.js';
 import { getRandomNumber, getRandomArrayElement } from './random.js';
+import { resetEffects } from './change-effects.js';
 const uploadForm = document.querySelector('.img-upload__form');
+
 const DESCRIPTION_TEXTS = [
   'Мексиканская художница, жена Диего Риверы. В её работах очень сильно влияние народного мексиканского искусства, культуры доколумбовых цивилизаций Америки. Также прослеживается влияние европейской живописи.',
   'Французский художник, скульптор, график, лидер течения фовистов. Известен своими изысканиями в передаче эмоций через цвет и форму. Мастер декоративного искусства. Работал в разных жанрах и видах искусства, используя различные техники.',
@@ -38,7 +40,11 @@ const setFormSubmit = () => {
     evt.preventDefault();
 
     sendData(
-      () => messageSuccess(),
+      () => {
+        messageSuccess();
+        resetEffects();
+        resetComment();
+      },
       () => messageError(),
       new FormData(evt.target),
     );

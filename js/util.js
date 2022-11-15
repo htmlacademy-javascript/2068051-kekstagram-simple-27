@@ -1,36 +1,62 @@
-export const checkMaxLenght = (string, minLenght, maxLenght) => {
-  return string >= minLenght && string <= maxLenght
+const checkStringLength = (string, length) => {
+  return string.length <= length;
 };
-checkMaxLenght(50, 20, 140);
 
+const comment = document.querySelector('.text__description');
 const isEscapeKey = (evt) => evt.key === 'Escape';
 const isEnterKey = (evt) => evt.key === 'Enter';
 
-export {isEscapeKey, isEnterKey};
+const resetComment = () => {
+  comment.value = '';
+};
 
 const templateMessageSuccess = document.querySelector('#success').content;
 const templateSuccess = templateMessageSuccess.querySelector('.success');
-
 const templateMessageError = document.querySelector('#error').content;
 const templateError = templateMessageError.querySelector('.error');
 
-const ALERT_SHOW_TIME = 5000;
-const messageSuccess = () => {
-  const newElement = templateSuccess.cloneNode(true);
+const ALERT_SHOW_TIME = 10000;
+
+
+/**
+ * @param {newElement} template
+ */
+const messageALert = (template) => {
+  const newElement = template.cloneNode(true);
   document.body.append(newElement);
 
-  setTimeout(() => {
+
+  const submitButton = newElement.querySelector('button');
+  /**
+   * @param {Event} evt
+   */
+  const closeSuccessMessage = ({target}) => {
+    if (target === newElement || target === submitButton) {
+      close();
+    }};
+
+  const onEscKeydown = (evt) => {
+    if (isEscapeKey(evt)) {
+      evt.preventDefault();
+      close();
+    }
+  };
+  newElement.addEventListener('click', closeSuccessMessage);
+  document.addEventListener('keydown', onEscKeydown);
+  const close = () => {
     newElement.remove();
-  }, ALERT_SHOW_TIME);
+    newElement.removeEventListener('click', closeSuccessMessage);
+    document.removeEventListener('keydown', onEscKeydown);
+  };
+  setTimeout(close, ALERT_SHOW_TIME);
+};
+
+const messageSuccess = () => {
+  messageALert(templateSuccess);
 };
 
 const messageError = () => {
-  const newElement = templateError.cloneNode(true);
-  document.body.append(newElement);
-
-  setTimeout(() => {
-    newElement.remove();
-  }, ALERT_SHOW_TIME);
+  messageALert(templateError);
 };
 
-export { messageSuccess, messageError };
+export { messageError, messageSuccess, isEscapeKey, resetComment };
