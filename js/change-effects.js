@@ -1,5 +1,6 @@
 const imageAddEffect = document.querySelector('.img-upload__preview img');
 const form = document.querySelector('.img-upload__form');
+const listEffects = document.querySelector('.effects__list');
 
 const EFFECTS = [
   {
@@ -41,9 +42,19 @@ const onChangeEffect = (evt) => {
   imageAddEffect.classList.add(`effects__preview--${currentEffect.name}`);
 };
 
-export const resetEffects = () => {
+
+listEffects.addEventListener('change', onChangeEffect);
+
+
+const resetEffect = () => {
   imageAddEffect.style.filter = 'none';
+  // listEffects.removeEventListener('input', onChangeEffect);
+  onChangeEffect();
 };
 
-form.addEventListener('change', onChangeEffect);
+// const removeEffects = () => {
+//   listEffects.removeEventListener('input', onChangeEffect);
+// };
+
+export { resetEffect };
 

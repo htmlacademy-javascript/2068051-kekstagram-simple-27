@@ -1,4 +1,4 @@
-import {generateUsersPhotos} from './data.js';
+// import {generateUsersPhotos} from './data.js';
 const templateFragment = document.querySelector('#picture').content;
 const template = templateFragment.querySelector('.picture');
 const listOfPictures = document.querySelector('.pictures');
@@ -6,11 +6,11 @@ const listOfPictures = document.querySelector('.pictures');
 const renderListOfPictures = (usersPhotos) => {
   const picturesFragment = document.createDocumentFragment();
 
-  usersPhotos = generateUsersPhotos(25);
+  // usersPhotos = generateUsersPhotos(25);
 
-  usersPhotos.forEach (({urlPhoto,likes, comments}) => {
+  usersPhotos.forEach (({url,likes, comments}) => {
     const imageElement = template.cloneNode(true);
-    imageElement.querySelector('.picture__img').src = urlPhoto;
+    imageElement.querySelector('.picture__img').src = url;
     imageElement.querySelector('.picture__likes').textContent = likes;
     imageElement.querySelector('.picture__comments').textContent = comments;
     picturesFragment.appendChild(imageElement);
