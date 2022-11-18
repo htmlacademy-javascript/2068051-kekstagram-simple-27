@@ -1,6 +1,4 @@
-const checkStringLength = (string, length) => {
-  return string.length <= length;
-};
+const checkStringLength = (string, length) => string.length <= length;
 
 const comment = document.querySelector('.text__description');
 const isEscapeKey = (evt) => evt.key === 'Escape';
