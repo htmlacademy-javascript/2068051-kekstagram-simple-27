@@ -1,10 +1,9 @@
 import { isEscapeKey } from './util.js';
 import { resetZoom } from './zoom.js';
-import { resetEffects } from './change-effects.js';
+import { resetEffect } from './change-effects.js';
 
 const userModal = document.querySelector('.img-upload__overlay');
 const modalOpenElement = document.querySelector('#upload-file');
-// const modalCloseElenent = document.querySelector('#upload-cancel');
 const body = document.querySelector('body');
 const uploadForm = document.querySelector('.img-upload__form');
 
@@ -25,7 +24,7 @@ const closeUserModal = () => {
   userModal.classList.add('hidden');
   body.classList.remove('modal-open');
   resetZoom();
-  resetEffects();
+  resetEffect();
   document.removeEventListener('keydown', onPopupEscKeydown);
 };
 

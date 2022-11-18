@@ -1,10 +1,10 @@
 const imageAddEffect = document.querySelector('.img-upload__preview img');
-const form = document.querySelector('.img-upload__form');
+const listEffects = document.querySelector('.effects__list');
 
 const EFFECTS = [
   {
     name: 'none',
-    style: 'none',
+    // style: 'none',
   },
   {
     name:'chrome',
@@ -41,9 +41,16 @@ const onChangeEffect = (evt) => {
   imageAddEffect.classList.add(`effects__preview--${currentEffect.name}`);
 };
 
-export const resetEffects = () => {
-  imageAddEffect.style.filter = 'none';
+
+listEffects.addEventListener('change', onChangeEffect);
+
+
+const resetEffect = () => {
+  imageAddEffect.style.filter = '';
+  currentEffect = BASE_EFFECT;
+  imageAddEffect.className = '';
+  // listEffects.removeEventListener('input', onChangeEffect);
 };
 
-form.addEventListener('change', onChangeEffect);
+export { resetEffect };
 
