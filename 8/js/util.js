@@ -1,4 +1,3 @@
-const checkStringLength = (string, length) => string.length <= length;
 
 const comment = document.querySelector('.text__description');
 const isEscapeKey = (evt) => evt.key === 'Escape';
@@ -25,27 +24,29 @@ const messageALert = (template) => {
 
 
   const submitButton = newElement.querySelector('button');
-  /**
-   * @param {Event} evt
-   */
-  const closeSuccessMessage = ({target}) => {
-    if (target === newElement || target === submitButton) {
-      close();
-    }};
-
-  const onEscKeydown = (evt) => {
-    if (isEscapeKey(evt)) {
-      evt.preventDefault();
-      close();
-    }
-  };
-  newElement.addEventListener('click', closeSuccessMessage);
-  document.addEventListener('keydown', onEscKeydown);
   const close = () => {
     newElement.remove();
     newElement.removeEventListener('click', closeSuccessMessage);
     document.removeEventListener('keydown', onEscKeydown);
   };
+  /**
+   * @param {Event} evt
+   */
+  function closeSuccessMessage ({target}) {
+    if (target === newElement || target === submitButton) {
+      close();
+    }}
+
+  function onEscKeydown (evt) {
+    if (isEscapeKey(evt)) {
+      evt.preventDefault();
+      close();
+    }
+  }
+
+  newElement.addEventListener('click', closeSuccessMessage);
+  document.addEventListener('keydown', onEscKeydown);
+
   setTimeout(close, ALERT_SHOW_TIME);
 };
 

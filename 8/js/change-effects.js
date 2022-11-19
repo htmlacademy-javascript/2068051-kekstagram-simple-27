@@ -4,7 +4,6 @@ const listEffects = document.querySelector('.effects__list');
 const EFFECTS = [
   {
     name: 'none',
-    // style: 'none',
   },
   {
     name:'chrome',
@@ -49,7 +48,6 @@ const resetEffect = () => {
   imageAddEffect.style.filter = '';
   currentEffect = BASE_EFFECT;
   imageAddEffect.className = '';
-  // listEffects.removeEventListener('input', onChangeEffect);
 };
 
 export { resetEffect };

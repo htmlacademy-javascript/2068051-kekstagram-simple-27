@@ -1,11 +1,16 @@
-const img = document.querySelector('.img-upload__preview img');
-document.querySelector('input[type="file"]').addEventListener('change', function() {
-  if (this.files && this.files[0]) {
-    img.onload = () => {
-      URL.revokeObjectURL(img.src);
+const image = document.querySelector('.img-upload__preview img');
+const images = document.querySelectorAll('.effects__preview');
+export const setImageOnChange = ({target: fileInput}) => {
+  if (fileInput.files && fileInput.files[0]) {
+    image.onload = () => {
+      URL.revokeObjectURL(image.src);
     };
 
-    img.src = URL.createObjectURL(this.files[0]);
+    const imageData = URL.createObjectURL(fileInput.files[0]);
+    image.src = imageData;
+    for (const preview of images) {
+      preview.style.backgroundImage = `url(${imageData})`;
+    }
   }
-});
+};
 
