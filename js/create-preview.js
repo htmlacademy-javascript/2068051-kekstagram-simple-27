@@ -2,7 +2,6 @@ const templateFragment = document.querySelector('#picture').content;
 const template = templateFragment.querySelector('.picture');
 const listOfPictures = document.querySelector('.pictures');
 
-// Это функция конструктор? Тут заглавная буква?
 const renderListOfPictures = (usersPhotos) => {
   const picturesFragment = document.createDocumentFragment();
 
