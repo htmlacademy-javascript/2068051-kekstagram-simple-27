@@ -1,10 +1,10 @@
 import { isEscapeKey } from './util.js';
 import { resetZoom } from './zoom.js';
-import { resetEffects } from './change-effects.js';
+import { resetEffect } from './change-effects.js';
+import { setImageOnChange } from './user-photo.js';
 
 const userModal = document.querySelector('.img-upload__overlay');
 const modalOpenElement = document.querySelector('#upload-file');
-// const modalCloseElenent = document.querySelector('#upload-cancel');
 const body = document.querySelector('body');
 const uploadForm = document.querySelector('.img-upload__form');
 
@@ -21,16 +21,22 @@ const openUserModal = () => {
   document.addEventListener('keydown', onPopupEscKeydown);
 };
 
+const onChangeFile = (evt) => {
+  openUserModal();
+  setImageOnChange(evt);
+};
+
 const closeUserModal = () => {
   userModal.classList.add('hidden');
   body.classList.remove('modal-open');
   resetZoom();
-  resetEffects();
+  resetEffect();
   document.removeEventListener('keydown', onPopupEscKeydown);
 };
 
-modalOpenElement.addEventListener('change', openUserModal);
+modalOpenElement.addEventListener('change', onChangeFile);
 
 uploadForm.addEventListener('reset', closeUserModal);
 
-export {uploadForm, modalOpenElement};
+
+export {closeUserModal};
