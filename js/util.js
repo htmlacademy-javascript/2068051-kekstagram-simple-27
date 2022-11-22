@@ -1,24 +1,16 @@
-
-const comment = document.querySelector('.text__description');
-const isEscapeKey = (evt) => evt.key === 'Escape';
-
-
-const resetComment = () => {
-  comment.value = '';
-};
-
-const templateMessageSuccess = document.querySelector('#success').content;
-const templateSuccess = templateMessageSuccess.querySelector('.success');
-const templateMessageError = document.querySelector('#error').content;
-const templateError = templateMessageError.querySelector('.error');
-
 const ALERT_SHOW_TIME = 10000;
 
+const templateMessageSuccess = document.querySelector('#success').content;
+const templateSuccessElement = templateMessageSuccess.querySelector('.success');
+const templateMessageError = document.querySelector('#error').content;
+const templateErrorElement = templateMessageError.querySelector('.error');
+
+const isEscapeKey = (evt) => evt.key === 'Escape';
 
 /**
  * @param {newElement} template
  */
-const messageALert = (template) => {
+const messageAlert = (template) => {
   const newElement = template.cloneNode(true);
   document.body.append(newElement);
 
@@ -51,11 +43,11 @@ const messageALert = (template) => {
 };
 
 const messageSuccess = () => {
-  messageALert(templateSuccess);
+  messageAlert(templateSuccessElement);
 };
 
 const messageError = () => {
-  messageALert(templateError);
+  messageAlert(templateErrorElement);
 };
 
 const showAlert = (message) => {
@@ -79,4 +71,4 @@ const showAlert = (message) => {
   }, ALERT_SHOW_TIME);
 };
 
-export { messageError, messageSuccess, isEscapeKey, resetComment, showAlert };
+export { messageError, messageSuccess, isEscapeKey, showAlert };
