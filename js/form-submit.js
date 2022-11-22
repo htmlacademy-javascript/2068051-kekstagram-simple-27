@@ -1,26 +1,26 @@
 import { sendData } from './api.js';
 import { messageSuccess, messageError } from './util.js';
-const uploadForm = document.querySelector('.img-upload__form');
-const submitButton = uploadForm.querySelector('.img-upload__submit');
+const uploadFormElement = document.querySelector('.img-upload__form');
+const submitButtonElement = uploadFormElement.querySelector('.img-upload__submit');
 
 
 const blockSubmitButton = () => {
-  submitButton.disabled = true;
-  submitButton.textContent = 'Сохраняю...';
+  submitButtonElement.disabled = true;
+  submitButtonElement.textContent = 'Сохраняю...';
 };
 
 const unblockSubmitButton = () => {
-  submitButton.disabled = false;
-  submitButton.textContent = 'Сохранить';
+  submitButtonElement.disabled = false;
+  submitButtonElement.textContent = 'Сохранить';
 };
 
 const setFormSubmit = () => {
-  uploadForm.addEventListener('submit', (evt) => {
+  uploadFormElement.addEventListener('submit', (evt) => {
     evt.preventDefault();
     blockSubmitButton();
     sendData(
       () => {
-        uploadForm.reset();
+        uploadFormElement.reset();
         messageSuccess();
         unblockSubmitButton();
       },

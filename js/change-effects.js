@@ -1,6 +1,3 @@
-const imageAddEffect = document.querySelector('.img-upload__preview img');
-const listEffects = document.querySelector('.effects__list');
-
 const EFFECTS = [
   {
     name: 'none',
@@ -28,6 +25,9 @@ const EFFECTS = [
 ];
 
 const BASE_EFFECT = EFFECTS[0];
+
+const imageAddEffectElement = document.querySelector('.img-upload__preview img');
+const listEffectsElement = document.querySelector('.effects__list');
 let currentEffect = BASE_EFFECT;
 
 const onChangeEffect = (evt) => {
@@ -35,19 +35,19 @@ const onChangeEffect = (evt) => {
     return;
   }
   currentEffect = EFFECTS.find((effect) => effect.name === evt.target.value);
-  imageAddEffect.className = '';
-  imageAddEffect.style.filter = `${currentEffect.style}`;
-  imageAddEffect.classList.add(`effects__preview--${currentEffect.name}`);
+  imageAddEffectElement.className = '';
+  imageAddEffectElement.style.filter = `${currentEffect.style}`;
+  imageAddEffectElement.classList.add(`effects__preview--${currentEffect.name}`);
 };
 
 
-listEffects.addEventListener('change', onChangeEffect);
+listEffectsElement.addEventListener('change', onChangeEffect);
 
 
 const resetEffect = () => {
-  imageAddEffect.style.filter = '';
+  imageAddEffectElement.style.filter = '';
   currentEffect = BASE_EFFECT;
-  imageAddEffect.className = '';
+  imageAddEffectElement.className = '';
 };
 
 export { resetEffect };

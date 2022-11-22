@@ -1,18 +1,18 @@
 const templateFragment = document.querySelector('#picture').content;
-const template = templateFragment.querySelector('.picture');
-const listOfPictures = document.querySelector('.pictures');
+const templateElement = templateFragment.querySelector('.picture');
+const listOfPicturesElement = document.querySelector('.pictures');
 
 const renderListOfPictures = (usersPhotos) => {
   const picturesFragment = document.createDocumentFragment();
 
   usersPhotos.forEach (({url,likes, comments}) => {
-    const imageElement = template.cloneNode(true);
+    const imageElement = templateElement.cloneNode(true);
     imageElement.querySelector('.picture__img').src = url;
     imageElement.querySelector('.picture__likes').textContent = likes;
     imageElement.querySelector('.picture__comments').textContent = comments;
     picturesFragment.appendChild(imageElement);
   });
-  listOfPictures.appendChild(picturesFragment);
+  listOfPicturesElement.appendChild(picturesFragment);
 };
 
 export { renderListOfPictures };
